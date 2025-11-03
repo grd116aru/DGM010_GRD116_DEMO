@@ -153,30 +153,30 @@ public class GameManager : MonoBehaviour
     {
         if (playerController.doubleJump == false)
         {
-            jumpText.text = "double jump: inactive";
-            jumpText.color = new Color(100f, 100f, 100f);
+            jumpText.text = "Double Jump";
+            jumpText.color = new Color(255f, 255f, 255f, 128f);
         }
 
         if (playerController.doubleJump == true)
         {
-            jumpText.text = "DOUBLE JUMP: ACTIVE";
-            jumpText.color = new Color(255f, 255f, 255f);
+            jumpText.text = "Double Jump";
+            jumpText.color = new Color(255f, 255f, 255f, 255f);
         }
     }
 
     public void UpdateKeyText()
     {
-        keyText.color = new Color(0f, 255f, 255f);
-
         if (hasKey == false)
         {
-            keyText.text = "has key: nope";
+            keyText.text = "Has Key";
+            keyText.color = new Color(0f, 255f, 255f, 128f);
 
         }
 
         if (hasKey == true)
         {
-            keyText.text = "Has Key: YES";
+            keyText.text = "Has Key";
+            keyText.color = new Color(0f, 255f, 255f, 255f);
         }
     }
 
