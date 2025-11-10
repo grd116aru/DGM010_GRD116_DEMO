@@ -17,6 +17,8 @@ TagManager:
   - jumpText
   - FinishLine
   - keyText
+  - Checkpoint
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX

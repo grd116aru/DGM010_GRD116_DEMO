@@ -70,6 +70,11 @@ public class PlayerController : MonoBehaviour
         {
             ShootPelletDown();
         }
+
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+        {
+            gameManager.isGameOver = true;
+        }
     }
 
     private void ShootPelletDown()
@@ -98,6 +103,11 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("FinishLine"))
         {
             gameManager.atFinish = true;
+        }
+
+        if (other.gameObject.CompareTag("Checkpoint"))
+        {
+
         }
     }
 

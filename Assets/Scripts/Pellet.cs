@@ -35,7 +35,7 @@ public class Pellet : MonoBehaviour
         }
         rb.freezeRotation = true;
 
-        moveSpeed = 20f;
+        moveSpeed = 15f;
         
         if (gameManager == null)
         {

@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public bool hasKey;
     public bool atFinish;
 
+    public Vector3 spawnPoint;
+
     public GameObject player;
     public static GameManager Instance;
     public PlayerController playerController;
@@ -153,7 +155,7 @@ public class GameManager : MonoBehaviour
     {
         if (playerController.doubleJump == false)
         {
-            jumpText.text = "Double Jump";
+            jumpText.text = "_";
             jumpText.color = new Color(255f, 255f, 255f, 128f);
         }
 
@@ -168,7 +170,7 @@ public class GameManager : MonoBehaviour
     {
         if (hasKey == false)
         {
-            keyText.text = "Has Key";
+            keyText.text = "_";
             keyText.color = new Color(0f, 255f, 255f, 128f);
 
         }
