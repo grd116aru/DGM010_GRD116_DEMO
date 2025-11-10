@@ -4,9 +4,9 @@ using static UnityEngine.GraphicsBuffer;
 public class Enemy : MonoBehaviour
 {
     public float speed = 2f;
-    private float damageCooldown = 1f;
-    private float lastDamageTime = 0f;
-    private Vector3 moveDirection;
+    [SerializeField] private float damageCooldown = 1f;
+    [SerializeField] private float lastDamageTime = 0f;
+    [SerializeField] private Vector3 moveDirection;
 
     public Rigidbody rb;
     public GameManager gameManager;

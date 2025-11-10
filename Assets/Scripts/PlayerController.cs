@@ -73,7 +73,13 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
-            gameManager.isGameOver = true;
+            if (gameManager.atFinish == true)
+            {
+                if (gameManager.hasKey == true)
+                {
+                    gameManager.isGameOver = true;
+                }
+            }
         }
     }
 
@@ -107,7 +113,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Checkpoint"))
         {
-
+            //set new spawnpoint
         }
     }
 

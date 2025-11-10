@@ -19,6 +19,7 @@ TagManager:
   - keyText
   - Checkpoint
   - SpawnPoint
+  - hurtVignette
   layers:
   - Default
   - TransparentFX
