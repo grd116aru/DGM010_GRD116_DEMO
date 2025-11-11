@@ -852,7 +852,7 @@ GameObject:
   - component: {fileID: 836358308}
   - component: {fileID: 836358307}
   m_Layer: 0
-  m_Name: CameraSwitch0
+  m_Name: LevelSwitch0
   m_TagString: cameraSwitch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
