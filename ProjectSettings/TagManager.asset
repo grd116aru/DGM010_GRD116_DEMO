@@ -20,6 +20,7 @@ TagManager:
   - Checkpoint
   - SpawnPoint
   - hurtVignette
+  - cameraSwitch
   layers:
   - Default
   - TransparentFX
