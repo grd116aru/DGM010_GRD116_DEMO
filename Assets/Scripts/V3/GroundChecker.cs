@@ -23,6 +23,7 @@ public class GroundChecker : MonoBehaviour
 
         if (other.gameObject.CompareTag("Platform"))
         {
+            playerController.hasGrounded = true;
             playerController.isGrounded = true;
         }
     }

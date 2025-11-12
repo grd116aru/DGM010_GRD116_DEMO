@@ -17,6 +17,7 @@ public class GameManagerV3 : MonoBehaviour
     //objects and components
     public static GameManagerV3 Instance;
     public GameObject player;
+    public GameObject cam;
     public PlayerControllerV3 playerController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -38,12 +39,15 @@ public class GameManagerV3 : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerController = player.GetComponent<PlayerControllerV3>();
+        cam = GameObject.FindGameObjectWithTag("MainCamera");
 
         gameScore = 0;
         gameHealth = 100;
         deathCount = 0;
         hasKey = false;
         atFinish = false;
+
+        cam.transform.position = new UnityEngine.Vector3(0f, 6f, -10f);
     }
 
     public void IncreaseScore(int value)

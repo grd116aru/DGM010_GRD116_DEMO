@@ -7,6 +7,7 @@ public class PlayerControllerV3 : MonoBehaviour
     public float jumpForce;
 
     public bool isGrounded;
+    public bool hasGrounded;
 
     public Vector3 spawnPoint;
 
@@ -23,11 +24,16 @@ public class PlayerControllerV3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerMovement();
+        if (hasGrounded == true)
+        {
+            PlayerMovement();
+        }
     }
 
     public void InitialSetup()
     {
+        hasGrounded = false;
+        
         moveSpeed = 5f;
         jumpForce = 6f;
 
@@ -39,7 +45,7 @@ public class PlayerControllerV3 : MonoBehaviour
         {
             spawnPoint = new Vector3(-7.5f, 10f, 0f);
         }
-        
+
         gameObject.transform.position = spawnPoint;
     }
 
