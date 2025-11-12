@@ -7,6 +7,7 @@ public class GameManagerV3 : MonoBehaviour
     //integers
     public int gameScore;
     public int gameHealth;
+    public int deathCount;
 
     //bools
     public bool isGameOver = false;
@@ -40,6 +41,7 @@ public class GameManagerV3 : MonoBehaviour
 
         gameScore = 0;
         gameHealth = 100;
+        deathCount = 0;
         hasKey = false;
         atFinish = false;
     }
@@ -52,8 +54,10 @@ public class GameManagerV3 : MonoBehaviour
     public void EndGame()
     {
         isGameOver = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        InitialSetup();
+        player.transform.position = playerController.spawnPoint;
+        gameHealth = 100;
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //InitialSetup();
         playerController.InitialSetup();
     }
 }

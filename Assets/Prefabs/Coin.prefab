@@ -124,7 +124,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -236,5 +236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc15c8f877aa54022b90ec74842e7868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   coinValue: 1
-  pickupSound: {fileID: 8300000, guid: a5f63ac825f8ca24a95ad400934faa24, type: 3}
+  pickupSound: {fileID: 8300000, guid: f67476393d4cf9d459a01de1d4a2c4dc, type: 3}

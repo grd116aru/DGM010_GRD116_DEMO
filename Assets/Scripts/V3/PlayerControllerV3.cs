@@ -8,8 +8,11 @@ public class PlayerControllerV3 : MonoBehaviour
 
     public bool isGrounded;
 
+    public Vector3 spawnPoint;
+
     public Rigidbody rb;
     public GameObject cam;
+    public GameManagerV3 gameManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,22 +28,19 @@ public class PlayerControllerV3 : MonoBehaviour
 
     public void InitialSetup()
     {
-        if (moveSpeed == 0)
+        moveSpeed = 5f;
+        jumpForce = 6f;
+
+        rb = GetComponent<Rigidbody>();
+        cam = GameObject.FindGameObjectWithTag("MainCamera");
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManagerV3>();
+
+        if (gameManager.deathCount == 0)
         {
-            moveSpeed = 5f;
+            spawnPoint = new Vector3(-7.5f, 10f, 0f);
         }
-        if (jumpForce == 0)
-        {
-            jumpForce = 6f;
-        }
-        if (rb == null)
-        {
-            rb = GetComponent<Rigidbody>();
-        }
-        if (cam == null)
-        {
-            cam = GameObject.FindGameObjectWithTag("MainCamera");
-        }
+        
+        gameObject.transform.position = spawnPoint;
     }
 
     private void PlayerMovement()
@@ -55,6 +55,15 @@ public class PlayerControllerV3 : MonoBehaviour
                 rb.linearVelocity = new Vector3(0f, jumpForce, 0f);
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            if (gameManager.atFinish == true)
+            {
+                //send player to next level
+                Debug.Log("Next Level!");
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -62,6 +71,24 @@ public class PlayerControllerV3 : MonoBehaviour
         if (other.gameObject.CompareTag("cameraSwitch"))
         {
             cam.transform.position = new Vector3(other.gameObject.transform.position.x, other.gameObject.transform.position.y, -10f);
+        }
+
+        if (other.gameObject.CompareTag("FinishLine"))
+        {
+            gameManager.atFinish = true;
+        }
+
+        if (other.gameObject.CompareTag("Checkpoint"))
+        {
+            spawnPoint = new Vector3(other.transform.position.x, other.transform.position.y, 0f);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("FinishLine"))
+        {
+            gameManager.atFinish = false;
         }
     }
 }
