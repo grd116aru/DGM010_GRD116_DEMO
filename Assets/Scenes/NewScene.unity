@@ -170,6 +170,7 @@ MonoBehaviour:
   hasKey: 0
   atFinish: 0
   player: {fileID: 0}
+  cam: {fileID: 0}
   playerController: {fileID: 0}
 --- !u!4 &111822101 stripped
 Transform:
@@ -2245,6 +2246,7 @@ MonoBehaviour:
   horizontalInput: 0
   jumpForce: 0
   isGrounded: 0
+  hasGrounded: 0
   spawnPoint: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
   cam: {fileID: 0}
