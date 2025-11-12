@@ -23,7 +23,7 @@ public class PlayerControllerV3 : MonoBehaviour
         PlayerMovement();
     }
 
-    private void InitialSetup()
+    public void InitialSetup()
     {
         if (moveSpeed == 0)
         {

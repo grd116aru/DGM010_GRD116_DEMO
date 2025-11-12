@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class GroundChecker : MonoBehaviour
 {
-    [SerializeField] private bool triggerActivate;
-
+    //[SerializeField] private bool triggerActivate;
     public PlayerControllerV3 playerController;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,7 +19,7 @@ public class GroundChecker : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        triggerActivate = true;
+        //triggerActivate = true;
 
         if (other.gameObject.CompareTag("Platform"))
         {
@@ -28,7 +28,7 @@ public class GroundChecker : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        triggerActivate = false;
+        //triggerActivate = false;
 
         if (other.gameObject.CompareTag("Platform"))
         {
