@@ -14,6 +14,7 @@ public class PlayerControllerV3 : MonoBehaviour
     public Rigidbody rb;
     public GameObject cam;
     public GameManagerV3 gameManager;
+    public DoorController doorController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -64,10 +65,11 @@ public class PlayerControllerV3 : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W))
         {
-            if (gameManager.atFinish == true)
+            if (gameManager.atFinish == true && gameManager.hasKey)
             {
                 //send player to next level
                 Debug.Log("Next Level!");
+                doorController.EnterDoor();
             }
         }
     }

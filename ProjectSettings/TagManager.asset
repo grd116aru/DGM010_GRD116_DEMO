@@ -21,6 +21,7 @@ TagManager:
   - SpawnPoint
   - hurtVignette
   - cameraSwitch
+  - Door
   layers:
   - Default
   - TransparentFX
