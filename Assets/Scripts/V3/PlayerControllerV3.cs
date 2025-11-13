@@ -70,6 +70,7 @@ public class PlayerControllerV3 : MonoBehaviour
                 //send player to next level
                 Debug.Log("Next Level!");
                 doorController.EnterDoor();
+                gameManager.hasKey = false;
             }
         }
     }
