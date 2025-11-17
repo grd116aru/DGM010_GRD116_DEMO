@@ -13,9 +13,8 @@ public class DeadZone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //GameManagerV3.Instance.isGameOver = true;
-            gameManager.deathCount += 1;
             gameManager.isGameOver = true;
+            gameManager.deathCount += 1;
         }
     }
 }

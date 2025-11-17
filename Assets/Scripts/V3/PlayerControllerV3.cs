@@ -6,13 +6,17 @@ public class PlayerControllerV3 : MonoBehaviour
     public float horizontalInput;
     public float jumpForce;
 
+    public char shotDirection;
+
     public bool isGrounded;
     public bool hasGrounded;
+    public bool canShoot;
 
     public Vector3 spawnPoint;
 
     public Rigidbody rb;
     public GameObject cam;
+    public GameObject pellet;
     public GameManagerV3 gameManager;
     public DoorController doorController;
 
@@ -34,7 +38,8 @@ public class PlayerControllerV3 : MonoBehaviour
     public void InitialSetup()
     {
         hasGrounded = false;
-        
+        canShoot = false;
+
         moveSpeed = 5f;
         jumpForce = 6f;
 
@@ -52,7 +57,25 @@ public class PlayerControllerV3 : MonoBehaviour
 
     private void PlayerMovement()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
+        //horizontalInput = Input.GetAxisRaw("Horizontal");
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            horizontalInput = horizontalInput - 1f;
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            horizontalInput = horizontalInput + 1f;
+        }
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            horizontalInput = horizontalInput + 1f;
+        }
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            horizontalInput = horizontalInput - 1f;
+        }
+
         rb.linearVelocity = new Vector3(horizontalInput * moveSpeed, rb.linearVelocity.y, rb.linearVelocity.z);
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -73,6 +96,37 @@ public class PlayerControllerV3 : MonoBehaviour
                 gameManager.hasKey = false;
             }
         }
+
+        if (canShoot == true)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                Debug.Log("LEFT!");
+                ShootPellet('L');
+            }
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                Debug.Log("RIGHT!");
+                ShootPellet('R');
+            }
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                Debug.Log("UP!");
+                ShootPellet('U');
+            }
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                Debug.Log("DOWN!");
+                ShootPellet('D');
+            }
+        }
+    }
+
+    private void ShootPellet(char direction)
+    {
+        shotDirection = direction;
+        GameObject pelletInstance = Instantiate(pellet, transform.position, transform.rotation);
+        pelletInstance.GetComponent<PelletV3>().SetShootDirection(shotDirection);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -98,6 +152,15 @@ public class PlayerControllerV3 : MonoBehaviour
         if (other.gameObject.CompareTag("FinishLine"))
         {
             gameManager.atFinish = false;
+        }
+
+        if (other.gameObject.CompareTag("Pellet"))
+        {
+            if (other.gameObject.GetComponent<PelletV3>().isCollectable == true)
+            {
+                Destroy(other.gameObject);
+                canShoot = true;
+            }
         }
     }
 }
