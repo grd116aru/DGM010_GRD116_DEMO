@@ -55,7 +55,7 @@ public class PlayerControllerV3 : MonoBehaviour
             spawnPoint = new Vector3(-7.5f, 10f, 0f);
         }
 
-        gameObject.transform.position = spawnPoint;
+        //gameObject.transform.position = spawnPoint;
     }
 
     private void PlayerMovement()

@@ -6,6 +6,8 @@ public class PelletV3 : MonoBehaviour
     public PlayerControllerV3 playerController;
     public Rigidbody rb;
 
+    public int damage = 1;
+
     private char shotDirection;
 
     public float shootSpeed;
@@ -15,6 +17,13 @@ public class PelletV3 : MonoBehaviour
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerV3>();
         rb = GetComponent<Rigidbody>();
+
+        if (damage == 0)
+        {
+            damage = 1;
+        }
+
+        Debug.Log(damage);
 
         shootSpeed = 15f;
 
@@ -57,11 +66,7 @@ public class PelletV3 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            Destroy(gameObject);
-            Destroy(other.gameObject);
-        }
+        
 
         if (other.gameObject.CompareTag("Platform"))
         {

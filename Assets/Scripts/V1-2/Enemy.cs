@@ -3,6 +3,8 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Enemy : MonoBehaviour
 {
+    public int enemyHealth = 1;
+
     public float speed = 2f;
     [SerializeField] private float damageCooldown = 1f;
     [SerializeField] private float lastDamageTime = 0f;
@@ -21,6 +23,12 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         transform.position = transform.position + (moveDirection * speed * Time.deltaTime);
+
+        if (enemyHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -41,6 +49,14 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("EndPointRight"))
         {
             moveDirection = Vector3.left;
+        }
+
+        if (other.gameObject.CompareTag("Pellet"))
+        {
+            int pelletDamage = other.gameObject.GetComponent<PelletV3>().damage;
+            enemyHealth -= pelletDamage;
+            Debug.Log($"Hit!-{enemyHealth}");
+            Destroy(other.gameObject);
         }
     }
 }
