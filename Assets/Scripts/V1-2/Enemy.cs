@@ -1,9 +1,8 @@
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class Enemy : MonoBehaviour
 {
-    public int enemyHealth = 1;
+    [SerializeField] private int enemyHealth = 1;
 
     public float speed = 2f;
     [SerializeField] private float damageCooldown = 1f;

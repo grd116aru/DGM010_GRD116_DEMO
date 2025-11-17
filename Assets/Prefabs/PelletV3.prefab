@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1835107314396788838}
   - component: {fileID: 3335716270228604415}
   - component: {fileID: 1965402065975266690}
-  - component: {fileID: 4126851599757809559}
   - component: {fileID: 6120453921540695030}
   - component: {fileID: 6490790405360355302}
+  - component: {fileID: 7359276336049989814}
   m_Layer: 0
   m_Name: PelletV3
   m_TagString: Pellet
@@ -89,21 +89,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4126851599757809559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059167522283933077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05f4b9158bac2124ebd04deca193ae07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isCollectable: 0
-  playerController: {fileID: 0}
-  rb: {fileID: 0}
 --- !u!135 &6120453921540695030
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -152,3 +137,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7359276336049989814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059167522283933077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f4b9158bac2124ebd04deca193ae07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCollectable: 0
+  playerController: {fileID: 0}
+  rb: {fileID: 0}
+  damage: 1
+  shootSpeed: 0

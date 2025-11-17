@@ -18,10 +18,10 @@ public class PelletV3 : MonoBehaviour
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerV3>();
         rb = GetComponent<Rigidbody>();
 
-        if (damage == 0)
-        {
-            damage = 1;
-        }
+        //if (damage == 0)
+        //{
+        //    damage = 1;
+        //}
 
         Debug.Log(damage);
 
