@@ -62,6 +62,11 @@ public class PelletV3 : MonoBehaviour
             Destroy(gameObject);
             Destroy(other.gameObject);
         }
+
+        if (other.gameObject.CompareTag("Platform"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerExit(Collider other)

@@ -19,6 +19,7 @@ public class PlayerControllerV3 : MonoBehaviour
     public GameObject pellet;
     public GameManagerV3 gameManager;
     public DoorController doorController;
+    public GameObject pauseMenuUI;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,6 +34,8 @@ public class PlayerControllerV3 : MonoBehaviour
         {
             PlayerMovement();
         }
+
+        
     }
 
     public void InitialSetup()
