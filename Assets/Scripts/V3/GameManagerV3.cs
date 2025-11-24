@@ -19,6 +19,8 @@ public class GameManagerV3 : MonoBehaviour
     public GameObject player;
     public GameObject cam;
     public PlayerControllerV3 playerController;
+    public GameObject currentEnemy;
+    public Enemy enemyController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,6 +42,8 @@ public class GameManagerV3 : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerController = player.GetComponent<PlayerControllerV3>();
         cam = GameObject.FindGameObjectWithTag("MainCamera");
+        currentEnemy = GameObject.FindGameObjectWithTag("Enemy");
+        enemyController = currentEnemy.GetComponent<Enemy>();
 
         gameScore = 0;
         gameHealth = 100;
@@ -60,8 +64,8 @@ public class GameManagerV3 : MonoBehaviour
         isGameOver = false;
         player.transform.position = playerController.spawnPoint;
         gameHealth = 100;
+        //currentEnemy.SetActive(true);
+        //enemyController.enemyHealth = 3;
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        //InitialSetup();
-        playerController.InitialSetup();
     }
 }

@@ -1,8 +1,9 @@
+using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private int enemyHealth = 1;
+    [SerializeField] public int enemyHealth = 3;
 
     public float speed = 2f;
     [SerializeField] private float damageCooldown = 1f;
@@ -10,13 +11,22 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Vector3 moveDirection;
 
     public Rigidbody rb;
-    public GameManager gameManager;
+    public GameManagerV3 gameManager;
+    public MeshRenderer mr;
+    public BoxCollider bc;
+
 
     private void Start()
     {
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManagerV3>();
         rb = GetComponent<Rigidbody>();
+        mr = GetComponent<MeshRenderer>();
+        bc = GetComponent<BoxCollider>();
         moveDirection = Vector3.left;
+
+        mr.enabled = true;
+        bc.enabled = true;
+
     }
 
     private void Update()
@@ -25,6 +35,7 @@ public class Enemy : MonoBehaviour
 
         if (enemyHealth <= 0)
         {
+            //gameObject.SetActive(false);
             Destroy(gameObject);
         }
 
@@ -53,6 +64,7 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("Pellet"))
         {
             int pelletDamage = other.gameObject.GetComponent<PelletV3>().damage;
+            gameManager.currentEnemy = gameObject;
             enemyHealth -= pelletDamage;
             Debug.Log($"Hit!-{enemyHealth}");
             Destroy(other.gameObject);

@@ -21,6 +21,8 @@ public class PlayerControllerV3 : MonoBehaviour
     public DoorController doorController;
     public GameObject pauseMenuUI;
 
+    public Enemy currentEnemy;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
