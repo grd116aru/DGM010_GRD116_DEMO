@@ -1,4 +1,5 @@
 using System.Numerics;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,6 +22,8 @@ public class GameManagerV3 : MonoBehaviour
     public PlayerControllerV3 playerController;
     public GameObject currentEnemy;
     public Enemy enemyController;
+
+    public TextMeshProUGUI scoreText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

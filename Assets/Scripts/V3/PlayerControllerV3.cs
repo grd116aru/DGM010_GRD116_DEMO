@@ -25,6 +25,9 @@ public class PlayerControllerV3 : MonoBehaviour
 
     public bool canDoubleJump;
 
+    public Material baseMaterial;
+    public Material jumpMaterial;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -39,7 +42,15 @@ public class PlayerControllerV3 : MonoBehaviour
             PlayerMovement();
         }
 
-        
+        if (canDoubleJump == true)
+        {
+            gameObject.GetComponent<Renderer>().material = jumpMaterial;
+        }
+        else
+        {
+            gameObject.GetComponent<Renderer>().material = baseMaterial;
+        }
+
     }
 
     public void InitialSetup()
@@ -114,22 +125,22 @@ public class PlayerControllerV3 : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                Debug.Log("LEFT!");
+                //Debug.Log("LEFT!");
                 ShootPellet('L');
             }
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                Debug.Log("RIGHT!");
+                //Debug.Log("RIGHT!");
                 ShootPellet('R');
             }
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                Debug.Log("UP!");
+                //Debug.Log("UP!");
                 ShootPellet('U');
             }
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                Debug.Log("DOWN!");
+                //Debug.Log("DOWN!");
                 ShootPellet('D');
             }
         }
