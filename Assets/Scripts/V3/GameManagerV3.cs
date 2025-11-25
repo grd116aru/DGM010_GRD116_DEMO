@@ -44,7 +44,6 @@ public class GameManagerV3 : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerController = player.GetComponent<PlayerControllerV3>();
         cam = GameObject.FindGameObjectWithTag("MainCamera");
-        enemyController = currentEnemy.GetComponent<Enemy>();
 
         gameScore = 0;
         gameHealth = 100;

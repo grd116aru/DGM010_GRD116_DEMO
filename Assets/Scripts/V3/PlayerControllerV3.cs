@@ -23,6 +23,8 @@ public class PlayerControllerV3 : MonoBehaviour
 
     public Enemy currentEnemy;
 
+    public bool canDoubleJump;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -44,6 +46,7 @@ public class PlayerControllerV3 : MonoBehaviour
     {
         hasGrounded = false;
         canShoot = false;
+        canDoubleJump = false;
 
         moveSpeed = 5f;
         jumpForce = 6f;
@@ -88,6 +91,11 @@ public class PlayerControllerV3 : MonoBehaviour
             if (isGrounded == true)
             {
                 rb.linearVelocity = new Vector3(0f, jumpForce, 0f);
+            }
+            else if (canDoubleJump == true)
+            {
+                rb.linearVelocity = new Vector3(0f, jumpForce, 0f);
+                canDoubleJump = false;
             }
         }
 

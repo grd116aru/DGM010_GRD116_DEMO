@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour
     public MeshRenderer mr;
     public BoxCollider bc;
 
+    public PlayerControllerV3 playerController;
+
+    public bool isDJEnemy;
 
     private void Start()
     {
@@ -28,6 +31,8 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         mr = GetComponent<MeshRenderer>();
         bc = GetComponent<BoxCollider>();
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerV3>();
+
         moveDirection = Vector3.left;
 
         mr.enabled = true;
@@ -42,6 +47,11 @@ public class Enemy : MonoBehaviour
 
         if (enemyHealth <= 0)
         {
+            if (isDJEnemy == true)
+            {
+                playerController.canDoubleJump = true;
+            }
+
             gameObject.SetActive(false);
         }
 
@@ -71,6 +81,7 @@ public class Enemy : MonoBehaviour
         {
             int pelletDamage = other.gameObject.GetComponent<PelletV3>().damage;
             gameManager.currentEnemy = gameObject;
+            gameManager.enemyController = gameManager.currentEnemy.GetComponent<Enemy>();
             enemyHealth -= pelletDamage;
             Debug.Log($"Hit!-{enemyHealth}");
             Destroy(other.gameObject);
