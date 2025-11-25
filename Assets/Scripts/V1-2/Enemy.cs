@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] public int enemyHealth = 3;
+    [SerializeField] public int enemyHealth;
 
     public float speed = 2f;
     [SerializeField] private float damageCooldown = 1f;
@@ -18,6 +18,12 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        InitialSetup();
+
+    }
+
+    public void InitialSetup()
+    {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManagerV3>();
         rb = GetComponent<Rigidbody>();
         mr = GetComponent<MeshRenderer>();
@@ -27,6 +33,7 @@ public class Enemy : MonoBehaviour
         mr.enabled = true;
         bc.enabled = true;
 
+        enemyHealth = 3;
     }
 
     private void Update()
@@ -35,8 +42,7 @@ public class Enemy : MonoBehaviour
 
         if (enemyHealth <= 0)
         {
-            //gameObject.SetActive(false);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
     }

@@ -34,6 +34,8 @@ public class GameManagerV3 : MonoBehaviour
         if (isGameOver == true)
         {
             EndGame();
+            enemyController.InitialSetup();
+            currentEnemy.SetActive(true);
         }
     }
 
@@ -42,7 +44,6 @@ public class GameManagerV3 : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerController = player.GetComponent<PlayerControllerV3>();
         cam = GameObject.FindGameObjectWithTag("MainCamera");
-        currentEnemy = GameObject.FindGameObjectWithTag("Enemy");
         enemyController = currentEnemy.GetComponent<Enemy>();
 
         gameScore = 0;
