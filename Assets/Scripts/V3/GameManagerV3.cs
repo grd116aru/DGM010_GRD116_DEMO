@@ -9,6 +9,7 @@ public class GameManagerV3 : MonoBehaviour
     public int gameScore;
     public int gameHealth;
     public int deathCount;
+    public int killCount;
 
     //bools
     public bool isGameOver = false;
@@ -24,6 +25,8 @@ public class GameManagerV3 : MonoBehaviour
     public Enemy enemyController;
 
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI deathText;
+    public TextMeshProUGUI killsText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,11 +37,21 @@ public class GameManagerV3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameHealth == 0)
+        {
+            deathCount += 1;
+            UpdateTexts();
+            isGameOver = true;
+        }
+
         if (isGameOver == true)
         {
             EndGame();
-            enemyController.InitialSetup();
-            currentEnemy.SetActive(true);
+            if (enemyController != null)
+            {
+                enemyController.InitialSetup();
+                currentEnemy.SetActive(true);
+            }
         }
     }
 
@@ -51,15 +64,38 @@ public class GameManagerV3 : MonoBehaviour
         gameScore = 0;
         gameHealth = 100;
         deathCount = 0;
+        killCount = 0;
         hasKey = false;
         atFinish = false;
 
+        GameObject ScoreText = GameObject.FindGameObjectWithTag("scoreText");
+        scoreText = ScoreText.GetComponent<TextMeshProUGUI>();
+        GameObject DeathCountText = GameObject.FindGameObjectWithTag("hpText");
+        deathText = DeathCountText.GetComponent<TextMeshProUGUI>();
+        GameObject KillsText = GameObject.FindGameObjectWithTag("jumpText");
+        killsText = KillsText.GetComponent<TextMeshProUGUI>();
+
         cam.transform.position = new UnityEngine.Vector3(0f, 6f, -10f);
+
+        UpdateTexts();
     }
 
     public void IncreaseScore(int value)
     {
         gameScore = gameScore + value;
+        UpdateTexts();
+    }
+
+    public void UpdateTexts()
+    {
+        scoreText.text = "Score: " + gameScore.ToString();
+        deathText.text = "Deaths: " + deathCount.ToString();
+        killsText.text = "Kills: " + killCount.ToString();
+    }
+
+    public void ReduceHP(int value)
+    {
+        gameHealth -= value;
     }
     
     public void EndGame()

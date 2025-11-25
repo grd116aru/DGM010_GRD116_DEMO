@@ -23,6 +23,7 @@ TagManager:
   - cameraSwitch
   - Door
   - PauseMenu
+  - Coin
   layers:
   - Default
   - TransparentFX

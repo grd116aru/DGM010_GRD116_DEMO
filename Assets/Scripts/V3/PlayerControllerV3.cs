@@ -169,6 +169,11 @@ public class PlayerControllerV3 : MonoBehaviour
         {
             spawnPoint = new Vector3(other.transform.position.x, other.transform.position.y, 0f);
         }
+
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            //gameManager.UpdateTexts();
+        }
     }
 
     private void OnTriggerExit(Collider other)

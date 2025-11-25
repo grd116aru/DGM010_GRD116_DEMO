@@ -15,6 +15,7 @@ public class DeadZone : MonoBehaviour
         {
             gameManager.isGameOver = true;
             gameManager.deathCount += 1;
+            gameManager.UpdateTexts();
         }
     }
 }

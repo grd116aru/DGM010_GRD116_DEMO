@@ -52,6 +52,9 @@ public class Enemy : MonoBehaviour
                 playerController.canDoubleJump = true;
             }
 
+            gameManager.killCount += 1;
+            gameManager.UpdateTexts();
+
             gameObject.SetActive(false);
         }
 
@@ -61,7 +64,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && Time.time > lastDamageTime + damageCooldown)
         {
-            GameManager.Instance.ReduceHP(100);
+            gameManager.ReduceHP(100);
             lastDamageTime = Time.time;
         }
     }

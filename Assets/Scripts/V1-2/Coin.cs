@@ -7,16 +7,19 @@ public class Coin : MonoBehaviour
     public AudioClip pickupSound;
     private AudioSource audioSource;
 
+    public GameManagerV3 gameManager;
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManagerV3>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.Instance.IncreaseScore(coinValue);
+            gameManager.IncreaseScore(coinValue);
 
             // Hide coin so it looks collected
             GetComponent<MeshRenderer>().enabled = false;
