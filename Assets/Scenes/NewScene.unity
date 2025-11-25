@@ -8662,7 +8662,7 @@ GameObject:
   - component: {fileID: 1258213889}
   - component: {fileID: 1258213888}
   m_Layer: 5
-  m_Name: ScoreText (1)
+  m_Name: KillsText
   m_TagString: jumpText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8682,10 +8682,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 812925940}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.024584798, y: 0.035513517}
-  m_AnchorMax: {x: 0.14383042, y: 0.091565505}
-  m_AnchoredPosition: {x: 1676, y: -2}
-  m_SizeDelta: {x: -4, y: -4}
+  m_AnchorMin: {x: 0.4596459, y: 0.035513517}
+  m_AnchorMax: {x: 0.58100003, y: 0.091565505}
+  m_AnchoredPosition: {x: 1, y: -2}
+  m_SizeDelta: {x: -10, y: -4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1258213888
 MonoBehaviour:
