@@ -2,6 +2,7 @@ using System.Numerics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class GameManagerV3 : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class GameManagerV3 : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI deathText;
     public TextMeshProUGUI killsText;
+
+    public Image hurtVignette;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -75,6 +78,9 @@ public class GameManagerV3 : MonoBehaviour
         GameObject KillsText = GameObject.FindGameObjectWithTag("jumpText");
         killsText = KillsText.GetComponent<TextMeshProUGUI>();
 
+        GameObject HurtVignette = GameObject.FindGameObjectWithTag("hurtVignette");
+        hurtVignette = HurtVignette.GetComponent<Image>();
+
         cam.transform.position = new UnityEngine.Vector3(0f, 6f, -10f);
 
         UpdateTexts();
@@ -97,7 +103,6 @@ public class GameManagerV3 : MonoBehaviour
     {
         gameHealth -= value;
     }
-    
     public void EndGame()
     {
         isGameOver = false;

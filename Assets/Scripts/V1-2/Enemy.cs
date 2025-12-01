@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] public int enemyHealth;
+    [SerializeField] public int enemyHealth = 3;
 
     public float speed;
     [SerializeField] private float damageCooldown = 1f;
@@ -38,13 +38,13 @@ public class Enemy : MonoBehaviour
         mr.enabled = true;
         bc.enabled = true;
 
-        if (isDJEnemy == true)
-        {
-            enemyHealth = 1;
-        }
-        else if (isDJEnemy == false)
+        if (isDJEnemy == false)
         {
             enemyHealth = 3;
+        }
+        else if (isDJEnemy == true)
+        {
+            enemyHealth = 1;
         }
 
         speed = 4f;
@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && Time.time > lastDamageTime + damageCooldown)
         {
-            gameManager.ReduceHP(100);
+            gameManager.ReduceHP(20);
             lastDamageTime = Time.time;
         }
     }
