@@ -393,8 +393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92770af263babd5499f001c2721190d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 3
-  speed: 2
+  enemyHealth: 0
+  speed: 3
   damageCooldown: 1
   lastDamageTime: 0
   moveDirection: {x: 0, y: 0, z: 0}
@@ -402,3 +402,5 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   mr: {fileID: 0}
   bc: {fileID: 0}
+  playerController: {fileID: 0}
+  isDJEnemy: 0

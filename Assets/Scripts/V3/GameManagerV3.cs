@@ -47,7 +47,7 @@ public class GameManagerV3 : MonoBehaviour
         if (isGameOver == true)
         {
             EndGame();
-            if (enemyController != null)
+            if (enemyController != null && currentEnemy != null)
             {
                 enemyController.InitialSetup();
                 currentEnemy.SetActive(true);

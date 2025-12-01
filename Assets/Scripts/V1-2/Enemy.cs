@@ -5,7 +5,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] public int enemyHealth;
 
-    public float speed = 2f;
+    public float speed;
     [SerializeField] private float damageCooldown = 1f;
     [SerializeField] private float lastDamageTime = 0f;
     [SerializeField] private Vector3 moveDirection;
@@ -38,7 +38,16 @@ public class Enemy : MonoBehaviour
         mr.enabled = true;
         bc.enabled = true;
 
-        enemyHealth = 3;
+        if (isDJEnemy == true)
+        {
+            enemyHealth = 1;
+        }
+        else if (isDJEnemy == false)
+        {
+            enemyHealth = 3;
+        }
+
+        speed = 4f;
     }
 
     private void Update()
@@ -82,6 +91,7 @@ public class Enemy : MonoBehaviour
 
         if (other.gameObject.CompareTag("Pellet"))
         {
+            speed -= 1f;
             int pelletDamage = other.gameObject.GetComponent<PelletV3>().damage;
             gameManager.currentEnemy = gameObject;
             gameManager.enemyController = gameManager.currentEnemy.GetComponent<Enemy>();

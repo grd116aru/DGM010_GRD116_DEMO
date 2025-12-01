@@ -27,6 +27,16 @@ public class GroundChecker : MonoBehaviour
             playerController.isGrounded = true;
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Platform"))
+        {
+            playerController.hasGrounded = true;
+            playerController.isGrounded = true;
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
         //triggerActivate = false;

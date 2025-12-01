@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerControllerV3 : MonoBehaviour
@@ -46,7 +47,7 @@ public class PlayerControllerV3 : MonoBehaviour
         {
             gameObject.GetComponent<Renderer>().material = jumpMaterial;
         }
-        else
+        else if (canDoubleJump == false)
         {
             gameObject.GetComponent<Renderer>().material = baseMaterial;
         }
@@ -93,6 +94,11 @@ public class PlayerControllerV3 : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.D))
         {
             horizontalInput = horizontalInput - 1f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            gameManager.isGameOver = true;
         }
 
         rb.linearVelocity = new Vector3(horizontalInput * moveSpeed, rb.linearVelocity.y, rb.linearVelocity.z);
