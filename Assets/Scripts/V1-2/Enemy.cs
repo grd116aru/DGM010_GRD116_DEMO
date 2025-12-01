@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && Time.time > lastDamageTime + damageCooldown)
         {
-            gameManager.ReduceHP(20);
+            gameManager.ReduceHP(100);
             lastDamageTime = Time.time;
         }
     }
