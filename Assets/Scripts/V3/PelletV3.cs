@@ -23,7 +23,7 @@ public class PelletV3 : MonoBehaviour
         //    damage = 1;
         //}
 
-        Debug.Log(damage);
+        //Debug.Log(damage);
 
         shootSpeed = 15f;
 
@@ -66,8 +66,6 @@ public class PelletV3 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
-
         if (other.gameObject.CompareTag("Platform"))
         {
             Destroy(gameObject);
